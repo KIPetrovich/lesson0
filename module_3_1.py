@@ -15,7 +15,6 @@ def string_info(string):                                       # Функция 
 
 def is_contains(string, list_to_search):       #Создать функцию is_contains с двумя параметрами string и list_to_search
     string = string.lower()                       # переводим искомую строку в нижний регистр
-    list_to_search = list(list_to_search)
     count_calls()                                        # счетчик вызовов
     for i in range(len(list_to_search)):
         if str(list_to_search[i]).lower() == string:    # переводим список в нижний регистр, одновременно сравнивая его со строкой
