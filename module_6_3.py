@@ -1,7 +1,7 @@
 class Horse:                         #класс описывающий лошадь.
                                      #Объект этого класса обладает следующими атрибутами:
     x_distance = 0                   # пройденный путь.
-    sound = 'Frrr'                   # звук, который издаёт лошадь.
+    _sound = 'Frrr'                   # звук, который издаёт лошадь.
 
     def run(self, dx):               # dx - изменение дистанции, увеличивает x_distance на dx.
         self.x_distance += dx
@@ -11,22 +11,21 @@ class Horse:                         #класс описывающий лоша
 class Eagle:                                    #класс описывающий орла.
                                                 # Объект этого класса обладает следующими атрибутами:
     y_distance = 0                              # высота полёта
-    _sound = 'I train, eat, sleep, and repeat'   #звук, который издаёт орёл (отсылка)
+    sound = 'I train, eat, sleep, and repeat'   #звук, который издаёт орёл (отсылка)
 
     def fly(self, dy):                         #где dy - изменение дистанции, увеличивает y_distance на d
         self.y_distance += dy
 
 
 class Pegasus(Horse, Eagle):                             #класс описывающий пегаса.
-                                                         #Наследуется от Horse и Eagle в том же порядке.
+                                                        #Наследуется от Horse и Eagle в том же порядке.
     def __init__(self):
-        self.x_distance = super().x_distance
-        self.sound = super().sound
-        self.y_distance = super().y_distance
-        self.sound = super()._sound
+        Horse.__init__(self)
+        Eagle.__init__(self)
+
 
     def move(self, dx, dy):             # где dx и dy изменения дистанции.
-        self.run(dx)                    # В этом методе должны запускаться наследованные методы run и fly соответственно.
+        self.run(dx)                    # В этом методе должны запускаться наследованные методы
         self.fly(dy)                    # run и fly соответственно.
 
     def get_pos(self):                                             # возвращает текущее положение пегаса в виде кортежа -
